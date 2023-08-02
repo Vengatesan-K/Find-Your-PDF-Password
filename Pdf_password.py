@@ -1,4 +1,3 @@
-pip install pikepdf
 import streamlit as st
 import pikepdf as pp
 import time
