@@ -1,5 +1,6 @@
 import streamlit as st
 import pikepdf as pp
+import pycryptodome
 import time
 from time import sleep
 from stqdm import stqdm
