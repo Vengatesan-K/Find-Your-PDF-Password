@@ -1,5 +1,5 @@
 import streamlit as st
-import pikepdf
+import pikepdf as pp
 import time
 from time import sleep
 from stqdm import stqdm
@@ -81,7 +81,7 @@ if selected == "PDF Password":
                 i += 1
                 print("\r {} Password Tested! ".format(i), end="")
                 try:
-                    pikepdf.open(df_file, password=password)
+                    pp.open(df_file, password=password)
                     end_time = time.time()
                     with st.spinner('Wait for it...'):
                      time.sleep(5)
