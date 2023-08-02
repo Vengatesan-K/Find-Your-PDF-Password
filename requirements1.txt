@@ -1,4 +1,4 @@
-pikepdf==8.2.3
+pikepdf==2.15.1
 stqdm==0.0.5
 PyPDF2==3.0.1
 fitz==0.0.1.dev2
