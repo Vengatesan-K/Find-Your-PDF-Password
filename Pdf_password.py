@@ -4,7 +4,6 @@ import time
 from time import sleep
 from stqdm import stqdm
 from streamlit_extras.add_vertical_space import add_vertical_space
-import pdfplumber
 import PyPDF2
 import fitz
 from streamlit_option_menu import option_menu
