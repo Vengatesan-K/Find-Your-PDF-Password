@@ -38,6 +38,7 @@ styles={"nav-link": {"font-size": "25px", "text-align": "center", "margin": "0px
         "nav-link-0": {"icon": "fa-home", "background-color": "#4285F4", "color": "white", "padding-left": "15px"}})
 
 if selected == "Home":
+    st.image("Pdfpass.png")
     st.markdown('__<p style="text-align:left; font-size: 28px; color: #020000">Finding the password of a PDF can be useful in various scenarios.</P>__',
                 unsafe_allow_html=True)
     st.caption(" Here are some of the common uses of finding PDF passwords :")
