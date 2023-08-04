@@ -36,7 +36,7 @@ In digital forensics investigations, finding PDF passwords can aid in accessing 
 
 Organizations might need to find PDF passwords to access documents for legal or compliance reasons, such as during audits or investigations.
 
-# How to find your forgetten password
+# How to find your forgotten password
 
      1. Click above "Open in Streamlit" Button
      2. Go to Password finder section, Upload your pdf file and select text file to test
