@@ -69,7 +69,7 @@ if selected == "PDF Password":
         st.info(f"Selected PDF file :  {df_file.name}", icon="ℹ️")
      add_vertical_space(3)
      st.write("Select the passwords file : ")
-     password_list = st.selectbox("Choose a file", ["combo.txt","rockyou.txt","permutations.txt"])
+     password_list = st.selectbox("Choose a file", ["combo.txt","rockyou_1.txt","rockyou_2.txt","permutations.txt"])
      with open(password_list, 'r', encoding='utf-8', errors='ignore') as passwords:
         if st.button("Find Password"):
             i = 0
