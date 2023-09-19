@@ -26,7 +26,7 @@ hide_st_style ="""
         </style>
         """      
 st.markdown(hide_st_style,unsafe_allow_html=True)
-st.image("png.png")
+st.image("png.jpg")
 selected = option_menu(None, ["Home","PDF Password", "Read PDF"], 
 icons=["house","key", "book"],
 default_index=0,
