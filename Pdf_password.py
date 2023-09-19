@@ -42,21 +42,24 @@ if selected == "Home":
     st.markdown('__<p style="text-align:left; font-size: 28px; color: #020000">Finding the password of a PDF can be useful in various scenarios.</P>__',
                 unsafe_allow_html=True)
     st.caption(" Here are some of the common uses of finding PDF passwords :")
-    st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Authorized Access Recovery : </P>__',
+    col1,col2 = st.columns([5,5])
+    with col1:
+     st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Authorized Access Recovery : </P>__',
                 unsafe_allow_html=True)
-    st.write(" If you have forgotten the password to a PDF file that you are authorized to access, finding the password can help you regain access to the contents of the file.")
-    st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Password Recovery : </P>__',
+     st.write(" If you have forgotten the password to a PDF file that you are authorized to access, finding the password can help you regain access to the contents of the file.")
+     st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Password Recovery : </P>__',
                 unsafe_allow_html=True)
-    st.write(" If you have encrypted a PDF file with a password and forgotten it, finding the password can help you recover the content without having to recreate the PDF from scratch.")
-    st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Security Testing :</P>__',
+     st.write(" If you have encrypted a PDF file with a password and forgotten it, finding the password can help you recover the content without having to recreate the PDF from scratch.")
+     st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Security Testing :</P>__',
                 unsafe_allow_html=True)
-    st.write(" In cybersecurity and penetration testing, finding PDF passwords can be part of security assessments to check the strength of passwords used to protect sensitive documents. It helps identify weak passwords that might be vulnerable to brute-force attacks.")
-    st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Digital Forensics :</P>__',
+     st.write(" In cybersecurity and penetration testing, finding PDF passwords can be part of security assessments to check the strength of passwords used to protect sensitive documents. It helps identify weak passwords that might be vulnerable to brute-force attacks.")
+    with col2: 
+     st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Digital Forensics :</P>__',
                 unsafe_allow_html=True)
-    st.write(" In digital forensics investigations, finding PDF passwords can aid in accessing potentially relevant evidence stored within encrypted PDF files.")
-    st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Legal and Compliance Purposes :</P>__',
+     st.write(" In digital forensics investigations, finding PDF passwords can aid in accessing potentially relevant evidence stored within encrypted PDF files.")
+     st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Legal and Compliance Purposes :</P>__',
                 unsafe_allow_html=True)
-    st.write(" Organizations might need to find PDF passwords to access documents for legal or compliance reasons, such as during audits or investigations.")
+     st.write(" Organizations might need to find PDF passwords to access documents for legal or compliance reasons, such as during audits or investigations.")
 
 if selected == "PDF Password":
     def main():
