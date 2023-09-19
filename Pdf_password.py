@@ -50,9 +50,7 @@ if selected == "Home":
      st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Password Recovery : </P>__',
                 unsafe_allow_html=True)
      st.write(" If you have encrypted a PDF file with a password and forgotten it, finding the password can help you recover the content without having to recreate the PDF from scratch.")
-     st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Security Testing :</P>__',
-                unsafe_allow_html=True)
-     st.write(" In cybersecurity and penetration testing, finding PDF passwords can be part of security assessments to check the strength of passwords used to protect sensitive documents. It helps identify weak passwords that might be vulnerable to brute-force attacks.")
+     
     with col2: 
      st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Digital Forensics :</P>__',
                 unsafe_allow_html=True)
