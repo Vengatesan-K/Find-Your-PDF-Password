@@ -19,7 +19,7 @@ reduce_header_height_style = """
         div.Sidebar   {padding-top:0rem;}
     </style>
 """
-#st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 hide_st_style ="""
         <style>
