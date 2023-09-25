@@ -19,7 +19,7 @@ reduce_header_height_style = """
         div.Sidebar   {padding-top:0rem;}
     </style>
 """
-st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+#st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 hide_st_style ="""
         <style>
@@ -28,7 +28,7 @@ hide_st_style ="""
         header {visibility: hidden;}
         </style>
         """      
-st.markdown(hide_st_style,unsafe_allow_html=True)
+#st.markdown(hide_st_style,unsafe_allow_html=True)
 st.image("png.jpg")
 selected = option_menu(None, ["Home","Encrypt pdf","Decrypt pdf", "Read PDF"], 
 icons=["house","lock","key", "book"],
