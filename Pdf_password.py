@@ -7,6 +7,9 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 import PyPDF2
 from streamlit_option_menu import option_menu
 import os
+import PyPDF2
+import base64
+from PyPDF2 import PdfReader, PdfWriter
 
 st.set_page_config(page_title='password', layout='wide', page_icon="#")
 
@@ -27,8 +30,8 @@ hide_st_style ="""
         """      
 st.markdown(hide_st_style,unsafe_allow_html=True)
 st.image("png.jpg")
-selected = option_menu(None, ["Home","PDF Password", "Read PDF"], 
-icons=["house","key", "book"],
+selected = option_menu(None, ["Home","Encrypt pdf","Decrypt pdf", "Read PDF"], 
+icons=["house","lock","key", "book"],
 default_index=0,
 orientation="horizontal",
 styles={"nav-link": {"font-size": "25px", "text-align": "center", "margin": "0px", "--hover-color": "red", "transition": "color 0.3s ease, background-color 0.3s ease"},
@@ -38,27 +41,76 @@ styles={"nav-link": {"font-size": "25px", "text-align": "center", "margin": "0px
         "nav-link-0": {"icon": "fa-home", "background-color": "#4285F4", "color": "white", "padding-left": "15px"}})
 
 if selected == "Home":
-    st.markdown('__<p style="text-align:left; font-size: 28px; color: #020000">Finding the password of a PDF can be useful in various scenarios.</P>__',
+    st.markdown('__<p style="text-align:left; font-size: 23px; color: #020000">Encrypting and decrypting PDF passwords is a crucial security measure to protect the content of PDF files and restrict access to authorized individuals.</P>__',
                 unsafe_allow_html=True)
-    st.caption(" Here are some of the common uses of finding PDF passwords :")
+    st.caption("Here are some common use cases for encrypting and decrypting PDF passwords:")
     col1,col2 = st.columns([5,5])
-    with col1:
-     st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Authorized Access Recovery : </P>__',
+    
+    with col1 : 
+     st.markdown('__<p style="text-align:left; font-size: 20px; color: #020000">Confidential Document Protection : </P>__',
                 unsafe_allow_html=True)
-     st.write(" If you have forgotten the password to a PDF file that you are authorized to access, finding the password can help you regain access to the contents of the file.")
-     st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Password Recovery : </P>__',
+     st.write(" Encrypting PDF files with a password ensures that sensitive or confidential information remains secure and accessible only to authorized users.")
+     st.markdown('__<p style="text-align:left; font-size: 20px; color: #020000">Secure Sharing of PDFs : </P>__',
                 unsafe_allow_html=True)
-     st.write(" If you have encrypted a PDF file with a password and forgotten it, finding the password can help you recover the content without having to recreate the PDF from scratch.")
-     
-    with col2: 
-     st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Digital Forensics :</P>__',
+     st.write("Encrypting PDFs before sharing via email, cloud storage, or any other means.")
+     st.markdown('__<p style="text-align:left; font-size: 20px; color: #020000">Secure Archiving and Storage :</P>__',
                 unsafe_allow_html=True)
-     st.write(" In digital forensics investigations, finding PDF passwords can aid in accessing potentially relevant evidence stored within encrypted PDF files.")
-     st.markdown('__<p style="text-align:left; font-size: 22px; color: #020000">Legal and Compliance Purposes :</P>__',
+     st.write("Safely storing confidential PDF documents in archives or databases while ensuring that only authorized personnel can access them.")
+    
+    with col2 : 
+     st.markdown('__<p style="text-align:left; font-size: 20px; color: #020000">Protection of Intellectual Property :</P>__',
                 unsafe_allow_html=True)
-     st.write(" Organizations might need to find PDF passwords to access documents for legal or compliance reasons, such as during audits or investigations.")
+     st.write("Safeguarding proprietary or intellectual property information from unauthorized access, sharing, or distribution.")
+     st.markdown('__<p style="text-align:left; font-size: 20px; color: #020000">Preventing Unauthorized Printing or Copying :</P>__',
+                unsafe_allow_html=True)
+     st.write("Controlling the printing, copying, or modification of PDF content to maintain its confidentiality and control distribution.")
+     st.markdown('__<p style="text-align:left; font-size: 20px; color: #020000">Restricted Access to Sensitive Data :</P>__',
+                unsafe_allow_html=True)
+     st.write("Limiting access to specific sections or pages of a PDF document containing sensitive data.")
+if selected == "Encrypt pdf":
+ st.subheader("PDF Password Protection")
 
-if selected == "PDF Password":
+# Upload a PDF file
+ uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"])
+
+ if uploaded_file is not None:
+    st.write("PDF file successfully uploaded!")
+
+    # Create PdfWriter and add pages
+    pdf_writer = PdfWriter()
+    pdf_reader = PdfReader(uploaded_file)
+    num_pages = len(pdf_reader.pages)
+
+    for page_num in range(num_pages):
+        pdf_writer.add_page(pdf_reader.pages[page_num])
+
+    # Get password from user
+    password = st.text_input("Enter Password:", type="password")
+
+    if password:
+        pdf_writer.encrypt(password)
+
+        # Save the password-protected PDF
+        password_protected_filename = 'password_protected.pdf'
+        with open(password_protected_filename, 'wb') as f:
+            pdf_writer.write(f)
+
+        st.success("PDF file is now password protected!")
+
+        # Encode the PDF file to base64 for download
+        with open(password_protected_filename, "rb") as f:
+            pdf_bytes = f.read()
+            pdf_base64 = base64.b64encode(pdf_bytes).decode()
+
+        # Create a link to download the password-protected PDF
+        href = f'<a href="data:application/octet-stream;base64,{pdf_base64}" download="{password_protected_filename}">Download password protected PDF</a>'
+        st.markdown(href, unsafe_allow_html=True)
+
+        os.remove(password_protected_filename)  # Remove the temporary PDF file
+
+    else:
+        st.warning("Please enter a password.")
+if selected == "Decrypt pdf":
     def main():
      st.markdown('__<p style="text-align:left; font-size: 28px; color: #020000">PDF Password Finder </P>__',
                 unsafe_allow_html=True)
